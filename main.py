@@ -14,3 +14,16 @@ def quadrados(max : Optional[int] = 5):
        "max" : max,
        "quadrados" : quadrados
    }
+
+@app.get("/tabuada/{num}")
+def tabuada(num : int, start : Optional[int] = 1, end : Optional[int] = 10):
+   tabuada = []
+   for i in range(start, end+1):
+       tabuada.append(num*i)
+  
+   return {
+       "num" : num,
+       "start" : start,
+       "end" : end,
+       "tabuada" : tabuada
+   }
