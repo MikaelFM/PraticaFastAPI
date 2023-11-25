@@ -1,5 +1,7 @@
+import re
 from typing import Optional
 from bhaskara import Bhaskara
+from frase import Frase
 from app import app
 
 @app.get("/quadrados")
@@ -34,4 +36,15 @@ def bhaskara(equacao : Bhaskara):
        "eq" : equacao.getEquacao(),
        "x1" : x1.real,
        "x2" : x2.real
+   }
+
+@app.post("/conta")
+def conta(frase : Frase):
+   vogais, consoantes, espacos, outros = frase.count()
+   return {
+       "frase": frase.frase,
+       "vogais": vogais,
+       "consoantes": consoantes,
+       "espacos": espacos,
+       "outros": outros
    }
